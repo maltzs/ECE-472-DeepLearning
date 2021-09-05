@@ -4,31 +4,12 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-from absl import flags, app
-
-FLAGS = flags.FLAGS
-flags.DEFINE_integer("num_samples", 50, "Number of samples in dataset")
-flags.DEFINE_integer("batch_size", 16, "Number of samples per iteration")
-flags.DEFINE_integer("num_iter", 750, "Number of SGD iterations")
-flags.DEFINE_float("learning_rate", 0.001, "Learning rate for SGD")
-flags.DEFINE_integer("random_seed", 12345, "Random seed")
-flags.DEFINE_float("sigma_noise", 0.1, "Random noise std")
-flags.DEFINE_integer("num_gaussians", 10, "Number of gaussian basis functions")
-
-
-class Data:
-    def __init__(self, num_samp, sigma, random_seed):
-        np.random.seed(random_seed)
-
-        self.index = np.arange(num_samp)
-        self.x = np.random.uniform(0.0, 1.0, size=(num_samp, 1)).astype("float32")
-        self.y = np.sin(2 * np.pi * self.x) + np.random.normal(
-            scale=sigma, size=(num_samp, 1)
-        )
-
-    def get_batch(self, batch_size):
-        ind = np.random.choice(self.index, batch_size)
-        return self.x[ind], self.y[ind].flatten()
+N = 50
+M = 10
+batch_size = 16
+num_iter = 750
+learning_rate = 0.001
+sigma_noise = 0.1
 
 
 class Model(tf.Module):
@@ -43,14 +24,21 @@ class Model(tf.Module):
         return tf.squeeze(gaussians @ self.w + self.b)
 
 
-def main(a):
-    data = Data(FLAGS.num_samples, FLAGS.sigma_noise, FLAGS.random_seed)
-    model = Model(FLAGS.num_gaussians)
-    optimizer = tf.optimizers.SGD(learning_rate=FLAGS.learning_rate)
+def main():
+    index = np.arange(N)
+    x_data = np.random.uniform(0.0, 1.0, size=(N, 1)).astype("float32")
+    y_data = np.sin(2 * np.pi * x_data) + np.random.normal(
+        scale=sigma_noise, size=(N, 1)
+    )
 
-    for i in range(FLAGS.num_iter):
+    model = Model(M)
+    optimizer = tf.optimizers.SGD(learning_rate=learning_rate)
+
+    for i in range(num_iter):
+        ind = np.random.choice(index, batch_size)
+        x = x_data[ind]
+        y = y_data[ind].flatten()
         with tf.GradientTape() as tape:
-            x, y = data.get_batch(FLAGS.batch_size)
             y_hat = model(x)
             loss = 0.5 * (y - y_hat) ** 2
 
@@ -66,8 +54,8 @@ def main(a):
 
     plt.figure()
     plt.plot(
-        data.x,
-        data.y,
+        x_data,
+        y_data,
         "go",
         x_noiseless,
         y_noiseless,
@@ -96,4 +84,4 @@ def main(a):
 
 
 if __name__ == "__main__":
-    app.run(main)
+    main()
