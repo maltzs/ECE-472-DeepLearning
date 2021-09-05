@@ -5,10 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 N = 50
-M = 10
+M = 5
 batch_size = 16
-num_iter = 750
-learning_rate = 0.001
+num_iter = 300
+learning_rate = 0.1
 sigma_noise = 0.1
 
 
@@ -40,7 +40,7 @@ def main():
         y = y_data[ind].flatten()
         with tf.GradientTape() as tape:
             y_hat = model(x)
-            loss = 0.5 * (y - y_hat) ** 2
+            loss = 0.5 * tf.reduce_mean((y - y_hat) ** 2)
 
         gradients = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
