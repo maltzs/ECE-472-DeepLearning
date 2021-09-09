@@ -60,6 +60,7 @@ def main():
     y_regression = y_gaussians @ model.w.numpy() + model.b.numpy()
 
     plt.figure()
+    plt.subplot(121)
     plt.plot(
         x_data,
         y_data,
@@ -77,9 +78,8 @@ def main():
     y_label = plt.ylabel("y")
     y_label.set_rotation(0)
     plt.title("Sinewave regression")
-    plt.savefig("sine.png", format="png")
 
-    plt.figure()
+    plt.subplot(122)
     plt.plot(x_noiseless, y_gaussians)
     plt.xlim((0, 1))
     plt.ylim((0, 1))
@@ -87,7 +87,7 @@ def main():
     y_label = plt.ylabel("y")
     y_label.set_rotation(0)
     plt.title("Gaussian basis functions")
-    plt.savefig("gaussians.png", format="png")
+    plt.savefig("fit.pdf")
 
 
 if __name__ == "__main__":
