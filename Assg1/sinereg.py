@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# ECE472-Samuel Maltz
+# Assignment 1: Linear regression of noisy sinewave on gaussian basis functions
 
 import tensorflow as tf
 import numpy as np
@@ -14,6 +15,7 @@ sigma_noise = 0.1
 
 class Model(tf.Module):
     def __init__(self, num_gaussians):
+        # Learnable parameters
         self.w = tf.Variable(tf.random.normal(shape=[num_gaussians, 1]))
         self.b = tf.Variable(tf.zeros(shape=[1, 1]))
         self.mu = tf.Variable(tf.linspace(0.0, 1.0, num_gaussians))
@@ -26,6 +28,8 @@ class Model(tf.Module):
 
 def main():
     index = np.arange(N)
+
+    # Create dataset
     x_data = np.random.uniform(0.0, 1.0, size=(N, 1)).astype("float32")
     y_data = np.sin(2 * np.pi * x_data) + np.random.normal(
         scale=sigma_noise, size=(N, 1)
@@ -35,6 +39,7 @@ def main():
     optimizer = tf.optimizers.SGD(learning_rate=learning_rate)
 
     for i in range(num_iter):
+        # Select random batch
         ind = np.random.choice(index, batch_size)
         x = x_data[ind]
         y = y_data[ind].flatten()
@@ -42,9 +47,11 @@ def main():
             y_hat = model(x)
             loss = 0.5 * tf.reduce_mean((y - y_hat) ** 2)
 
+        # Apply automatic differentiation
         gradients = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
 
+    # Plots
     x_noiseless = np.linspace(0.0, 1.0, 100)
     y_noiseless = np.sin(2 * np.pi * x_noiseless)
     y_gaussians = np.exp(
