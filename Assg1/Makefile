@@ -1,6 +1,7 @@
 fit: sinereg.py
 	black sinereg.py
 	flake8 --ignore=E,W sinereg.py
+	python sinereg.py
 
 pdf: fit
 	a2ps sinereg.py -o sinereg.ps --pro=color

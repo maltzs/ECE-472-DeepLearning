@@ -14,10 +14,14 @@
 
 import tensorflow as tf
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 
 from absl import app
 from absl import flags
+
+font = {"size": 10}
+matplotlib.rc("font", **font)
 
 FLAGS = flags.FLAGS
 flags.DEFINE_integer("num_samples", 500, "Number of samples in dataset")
@@ -120,15 +124,16 @@ def main(a):
     t_grid = np.reshape(t_grid, (300, 300))
     spiral_samps = FLAGS.num_samples // 2
 
-    plt.plot(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], "bo")
-    plt.plot(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], "ro")
-    c = plt.pcolormesh(x_grid, y_grid, t_grid, shading="nearest")
-    plt.colorbar(c)
-    plt.xlabel("x")
-    y_label = plt.ylabel("y")
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], "bo")
+    ax.plot(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], "ro")
+    c = ax.pcolormesh(x_grid, y_grid, t_grid, shading="nearest")
+    fig.colorbar(c)
+    ax.set_xlabel("x")
+    y_label = ax.set_ylabel("y")
     y_label.set_rotation(0)
-    plt.title("Spirals classification")
-    plt.savefig("spiral_class.pdf")
+    ax.set_title("Spirals classification")
+    fig.savefig("spiral_class.pdf")
 
 
 if __name__ == "__main__":

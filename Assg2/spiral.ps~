@@ -2,7 +2,7 @@
 %%Title: spiral.py
 %%For: 
 %%Creator: a2ps version 4.14
-%%CreationDate: Wed Sep 15 15:47:37 2021
+%%CreationDate: Wed Sep 15 11:05:45 2021
 %%BoundingBox: 24 24 571 818
 %%DocumentData: Clean7Bit
 %%Orientation: Landscape
@@ -784,8 +784,6 @@ x0 y0 moveto
 (import) K
 ( numpy as np) p n
 (import) K
-( matplotlib) p n
-(import) K
 ( matplotlib.pyplot as plt) p n
 () N
 (from) K
@@ -796,13 +794,6 @@ x0 y0 moveto
 ( absl ) p
 (import) K
 ( flags) p n
-() N
-(font = {") S
-(size) str
-(": 10}) p n
-(matplotlib.rc\(") S
-(font) str
-(", **font\)) p n
 () N
 (FLAGS = flags.FLAGS) N
 (flags.DEFINE_integer\(") S
@@ -875,18 +866,18 @@ x0 y0 moveto
 (def) K
 ( get_batch\(self, batch_size\):) p n
 (        choices = np.random.choice\(self.num_samp, batch_size\)) N
-(spiral.py) (Page 1/3) (Sep 15, 21 15:45) title
-border
-/v 1 store
-/x0 x v get 3.362408 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-() p n
+() N
 (        ) S
 (return) K
 ( self.data[choices], self.type[choices]) p n
 () N
 () N
+(spiral.py) (Page 1/3) (Sep 15, 21 11:03) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
 (class) K
 ( Model\(tf.Module\):) p n
 (    ) S
@@ -989,7 +980,11 @@ x0 y0 moveto
 (    ) S
 (# Full grid to show boundary of function) c n
 (    y_grid, x_grid = np.mgrid[15:-15:-0.1, -15:15:0.1]) p n
-(spiral.py) (Page 2/3) (Sep 15, 21 15:45) title
+(    t_grid = model\() N
+(        np.transpose\(np.vstack\(\(x_grid.flatten\(\), y_grid.flatten\(\)\)\)\), test=True) N
+(    \)) N
+(    t_grid = np.reshape\(t_grid, \(300, 300\)\)) N
+(spiral.py) (Page 2/3) (Sep 15, 21 11:03) title
 border
 grestore
 (Printed by ) rhead
@@ -1009,34 +1004,29 @@ llx lly 12 add translate
 /x0 x v get 3.362408 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(    t_grid = model\() p n
-(        np.transpose\(np.vstack\(\(x_grid.flatten\(\), y_grid.flatten\(\)\)\)\), test=True) N
-(    \)) N
-(    t_grid = np.reshape\(t_grid, \(300, 300\)\)) N
-(    spiral_samps = FLAGS.num_samples // 2) N
+(    spiral_samps = FLAGS.num_samples // 2) p n
 () N
-(    fig, ax = plt.subplots\(1, 1\)) N
-(    ax.plot\(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], ") S
+(    plt.plot\(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], ") S
 (bo) str
 ("\)) p n
-(    ax.plot\(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], ") S
+(    plt.plot\(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], ") S
 (ro) str
 ("\)) p n
-(    c = ax.pcolormesh\(x_grid, y_grid, t_grid, shading=") S
+(    c = plt.pcolormesh\(x_grid, y_grid, t_grid, shading=") S
 (nearest) str
 ("\)) p n
-(    fig.colorbar\(c\)) N
-(    ax.set_xlabel\(") S
+(    plt.colorbar\(c\)) N
+(    plt.xlabel\(") S
 (x) str
 ("\)) p n
-(    y_label = ax.set_ylabel\(") S
+(    y_label = plt.ylabel\(") S
 (y) str
 ("\)) p n
 (    y_label.set_rotation\(0\)) N
-(    ax.set_title\(") S
+(    plt.title\(") S
 (Spirals classification) str
 ("\)) p n
-(    fig.savefig\(") S
+(    plt.savefig\(") S
 (spiral_class.pdf) str
 ("\)) p n
 () N
@@ -1046,7 +1036,7 @@ x0 y0 moveto
 (__main__) str
 (":) p n
 (    app.run\(main\)) N
-(spiral.py) (Page 3/3) (Sep 15, 21 15:45) title
+(spiral.py) (Page 3/3) (Sep 15, 21 11:03) title
 border
 grestore
 (Printed by ) rhead

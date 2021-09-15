@@ -1,6 +1,7 @@
 fit: spiral.py
 	black spiral.py
 	flake8 --ignore=E,W spiral.py
+	python spiral.py
 
 pdf: fit
 	a2ps spiral.py -o spiral.ps --pro=color
