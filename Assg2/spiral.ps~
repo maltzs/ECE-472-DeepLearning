@@ -2,7 +2,7 @@
 %%Title: spiral.py
 %%For: 
 %%Creator: a2ps version 4.14
-%%CreationDate: Wed Sep 15 11:05:45 2021
+%%CreationDate: Sun Sep 12 11:17:43 2021
 %%BoundingBox: 24 24 571 818
 %%DocumentData: Clean7Bit
 %%Orientation: Landscape
@@ -765,8 +765,6 @@ llx lly 12 add translate
 /x0 x v get 3.362408 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(#!/usr/bin/env python) c n
-() p n
 (# ECE472-Samuel Maltz) c n
 (# Assignment 2: Classification of spirals using multilayered perceptron \(MLP\)) N
 () p n
@@ -838,29 +836,22 @@ x0 y0 moveto
 (        self.num_samp = num_samp) N
 (        spiral_samp = num_samp // 2) N
 () N
-(        ) S
-(# Spiral 1 starts at pi/2 to ensure spirals do not overlap.) c n
-(        data0 = self.create_data\(np.random.uniform\(0, 4 * np.pi, spiral_samp\), t) p n
-(ype=-1\)) N
-(        data1 = self.create_data\() N
-(            np.random.uniform\(0.5 * np.pi, 4 * np.pi, spiral_samp\), type=1) N
-(        \)) N
+(        s0 = np.random.uniform\(0, 4 * np.pi, spiral_samp\)) N
+(        x0 = -s0 * np.sin\(s0\) + np.random.normal\(scale=0.2, size=spiral_samp\)) N
+(        y0 = -s0 * np.cos\(s0\) + np.random.normal\(scale=0.2, size=spiral_samp\)) N
 () N
-(        self.data = np.vstack\(\(data0, data1\)\)) N
+(        ) S
+(# t1 starts at pi/2 to ensure spirals do not overlap) c n
+(        s1 = np.random.uniform\(0.5 * np.pi, 4 * np.pi, spiral_samp\)) p n
+(        x1 = s1 * np.sin\(s1\) + np.random.normal\(scale=0.2, size=spiral_samp\)) N
+(        y1 = s1 * np.cos\(s1\) + np.random.normal\(scale=0.2, size=spiral_samp\)) N
+() N
+(        x = np.concatenate\(\(x0, x1\)\)) N
+(        y = np.concatenate\(\(y0, y1\)\)) N
+() N
+(        self.data = np.transpose\(np.vstack\(\(x, y\)\)\)) N
 (        self.type = np.concatenate\(\(np.zeros\(\(spiral_samp,\)\), np.ones\(\(spiral_sa) N
 (mp,\)\)\)\)) N
-() N
-(    ) S
-(def) K
-( create_data\(self, t, type\):) p n
-(        x = type * t * np.sin\(t\)) N
-(        y = type * t * np.cos\(t\)) N
-() N
-(        ) S
-(return) K
-( np.transpose\(np.vstack\(\(x, y\)\)\) + np.random.normal\() p n
-(            scale=0.2, size=\(len\(t\), 2\)) N
-(        \)) N
 () N
 (    ) S
 (def) K
@@ -872,12 +863,6 @@ x0 y0 moveto
 ( self.data[choices], self.type[choices]) p n
 () N
 () N
-(spiral.py) (Page 1/3) (Sep 15, 21 11:03) title
-border
-/v 1 store
-/x0 x v get 3.362408 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
 (class) K
 ( Model\(tf.Module\):) p n
 (    ) S
@@ -886,7 +871,13 @@ x0 y0 moveto
 (        tf.random.set_seed\(random_seed\)) N
 () N
 (        self.index = np.arange\(len\(widths\) - 1\)) N
-() N
+(spiral.py) (Page 1/3) (Sep 12, 21 11:17) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p n
 (        ) S
 (# List of transition parameters.) c n
 (        self.W = [) p n
@@ -963,7 +954,7 @@ x0 y0 moveto
 ( range\(FLAGS.num_iter\):) p n
 (        z, t = data.get_batch\(FLAGS.batch_size\)) N
 (        with tf.GradientTape\(\) as tape:) N
-(            z = model\(z, test=False\)) N
+(            z = model\(z, False\)) N
 (            loss = model.loss\(t, z\)) N
 () N
 (        gradients = tape.gradient\(loss, model.trainable_variables\)) N
@@ -971,7 +962,7 @@ x0 y0 moveto
 () N
 (    ) S
 (# Testing on full training set) c n
-(    t_hat = model\(data.data, test=True\)) p n
+(    t_hat = model\(data.data, True\)) p n
 (    ) S
 (print) K
 (\(np.sum\(np.around\(t_hat.numpy\(\)\) != data.type\)\)  ) p
@@ -980,15 +971,26 @@ x0 y0 moveto
 (    ) S
 (# Full grid to show boundary of function) c n
 (    y_grid, x_grid = np.mgrid[15:-15:-0.1, -15:15:0.1]) p n
-(    t_grid = model\() N
-(        np.transpose\(np.vstack\(\(x_grid.flatten\(\), y_grid.flatten\(\)\)\)\), test=True) N
-(    \)) N
+(    t_grid = model\(np.transpose\(np.vstack\(\(x_grid.flatten\(\), y_grid.flatten\(\)\)\)\)) N
+(, True\)) N
 (    t_grid = np.reshape\(t_grid, \(300, 300\)\)) N
-(spiral.py) (Page 2/3) (Sep 15, 21 11:03) title
+(    spiral_samps = FLAGS.num_samples // 2) N
+() N
+(    plt.plot\(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], ") S
+(bo) str
+("\)) p n
+(    plt.plot\(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], ") S
+(ro) str
+("\)) p n
+(    c = plt.pcolormesh\(x_grid, y_grid, t_grid, shading=") S
+(nearest) str
+("\)) p n
+(    plt.colorbar\(c\)) N
+(spiral.py) (Page 2/3) (Sep 12, 21 11:17) title
 border
 grestore
 (Printed by ) rhead
-(spiral.py) (1/2) (Wednesday September 15, 2021) footer
+(spiral.py) (1/2) (Sunday September 12, 2021) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -1004,19 +1006,7 @@ llx lly 12 add translate
 /x0 x v get 3.362408 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(    spiral_samps = FLAGS.num_samples // 2) p n
-() N
-(    plt.plot\(data.data[:spiral_samps, 0], data.data[:spiral_samps, 1], ") S
-(bo) str
-("\)) p n
-(    plt.plot\(data.data[spiral_samps:, 0], data.data[spiral_samps:, 1], ") S
-(ro) str
-("\)) p n
-(    c = plt.pcolormesh\(x_grid, y_grid, t_grid, shading=") S
-(nearest) str
-("\)) p n
-(    plt.colorbar\(c\)) N
-(    plt.xlabel\(") S
+(    plt.xlabel\(") p
 (x) str
 ("\)) p n
 (    y_label = plt.ylabel\(") S
@@ -1036,11 +1026,11 @@ x0 y0 moveto
 (__main__) str
 (":) p n
 (    app.run\(main\)) N
-(spiral.py) (Page 3/3) (Sep 15, 21 11:03) title
+(spiral.py) (Page 3/3) (Sep 12, 21 11:17) title
 border
 grestore
 (Printed by ) rhead
-(spiral.py) (2/2) (Wednesday September 15, 2021) footer
+(spiral.py) (2/2) (Sunday September 12, 2021) footer
 end % of iso1dict
 pagesave restore
 showpage

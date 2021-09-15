@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # ECE472-Samuel Maltz
 # Assignment 2: Classification of spirals using multilayered perceptron (MLP)
 
@@ -33,20 +35,22 @@ class Data(object):
         self.num_samp = num_samp
         spiral_samp = num_samp // 2
 
-        s0 = np.random.uniform(0, 4 * np.pi, spiral_samp)
-        x0 = -s0 * np.sin(s0) + np.random.normal(scale=0.2, size=spiral_samp)
-        y0 = -s0 * np.cos(s0) + np.random.normal(scale=0.2, size=spiral_samp)
+        # Spiral 1 starts at pi/2 to ensure spirals do not overlap.
+        data0 = self.create_data(np.random.uniform(0, 4 * np.pi, spiral_samp), type=-1)
+        data1 = self.create_data(
+            np.random.uniform(0.5 * np.pi, 4 * np.pi, spiral_samp), type=1
+        )
 
-        # t1 starts at pi/2 to ensure spirals do not overlap
-        s1 = np.random.uniform(0.5 * np.pi, 4 * np.pi, spiral_samp)
-        x1 = s1 * np.sin(s1) + np.random.normal(scale=0.2, size=spiral_samp)
-        y1 = s1 * np.cos(s1) + np.random.normal(scale=0.2, size=spiral_samp)
-
-        x = np.concatenate((x0, x1))
-        y = np.concatenate((y0, y1))
-
-        self.data = np.transpose(np.vstack((x, y)))
+        self.data = np.vstack((data0, data1))
         self.type = np.concatenate((np.zeros((spiral_samp,)), np.ones((spiral_samp,))))
+
+    def create_data(self, t, type):
+        x = type * t * np.sin(t)
+        y = type * t * np.cos(t)
+
+        return np.transpose(np.vstack((x, y))) + np.random.normal(
+            scale=0.2, size=(len(t), 2)
+        )
 
     def get_batch(self, batch_size):
         choices = np.random.choice(self.num_samp, batch_size)
@@ -98,19 +102,21 @@ def main(a):
     for i in range(FLAGS.num_iter):
         z, t = data.get_batch(FLAGS.batch_size)
         with tf.GradientTape() as tape:
-            z = model(z, False)
+            z = model(z, test=False)
             loss = model.loss(t, z)
 
         gradients = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
 
     # Testing on full training set
-    t_hat = model(data.data, True)
+    t_hat = model(data.data, test=True)
     print(np.sum(np.around(t_hat.numpy()) != data.type))  # number incorrect
 
     # Full grid to show boundary of function
     y_grid, x_grid = np.mgrid[15:-15:-0.1, -15:15:0.1]
-    t_grid = model(np.transpose(np.vstack((x_grid.flatten(), y_grid.flatten()))), True)
+    t_grid = model(
+        np.transpose(np.vstack((x_grid.flatten(), y_grid.flatten()))), test=True
+    )
     t_grid = np.reshape(t_grid, (300, 300))
     spiral_samps = FLAGS.num_samples // 2
 
