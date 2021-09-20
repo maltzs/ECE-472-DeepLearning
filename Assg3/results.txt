@@ -1,0 +1,45 @@
+Epoch 1/12
+1500/1500 - 9s - loss: 2.7178 - sparse_categorical_accuracy: 0.3423 - val_loss: 1.1958 - val_sparse_categorical_accuracy: 0.6325
+Epoch 2/12
+1500/1500 - 8s - loss: 0.7146 - sparse_categorical_accuracy: 0.7986 - val_loss: 0.4039 - val_sparse_categorical_accuracy: 0.8953
+Epoch 3/12
+1500/1500 - 8s - loss: 0.3286 - sparse_categorical_accuracy: 0.9121 - val_loss: 0.2684 - val_sparse_categorical_accuracy: 0.9297
+Epoch 4/12
+1500/1500 - 8s - loss: 0.2537 - sparse_categorical_accuracy: 0.9306 - val_loss: 0.2226 - val_sparse_categorical_accuracy: 0.9396
+Epoch 5/12
+1500/1500 - 8s - loss: 0.2290 - sparse_categorical_accuracy: 0.9375 - val_loss: 0.2155 - val_sparse_categorical_accuracy: 0.9419
+Epoch 6/12
+1500/1500 - 8s - loss: 0.2158 - sparse_categorical_accuracy: 0.9405 - val_loss: 0.2022 - val_sparse_categorical_accuracy: 0.9477
+Epoch 7/12
+1500/1500 - 8s - loss: 0.2064 - sparse_categorical_accuracy: 0.9433 - val_loss: 0.1898 - val_sparse_categorical_accuracy: 0.9493
+Epoch 8/12
+1500/1500 - 8s - loss: 0.1976 - sparse_categorical_accuracy: 0.9459 - val_loss: 0.1903 - val_sparse_categorical_accuracy: 0.9476
+Epoch 9/12
+1500/1500 - 8s - loss: 0.1948 - sparse_categorical_accuracy: 0.9459 - val_loss: 0.1891 - val_sparse_categorical_accuracy: 0.9496
+Epoch 10/12
+1500/1500 - 8s - loss: 0.1896 - sparse_categorical_accuracy: 0.9481 - val_loss: 0.1801 - val_sparse_categorical_accuracy: 0.9512
+Epoch 11/12
+1500/1500 - 8s - loss: 0.1863 - sparse_categorical_accuracy: 0.9480 - val_loss: 0.1787 - val_sparse_categorical_accuracy: 0.9513
+Epoch 12/12
+1500/1500 - 8s - loss: 0.1867 - sparse_categorical_accuracy: 0.9479 - val_loss: 0.1695 - val_sparse_categorical_accuracy: 0.9545
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              multiple                  30        
+_________________________________________________________________
+conv2d_1 (Conv2D)            multiple                  56        
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+flatten (Flatten)            multiple                  0         
+_________________________________________________________________
+dropout (Dropout)            multiple                  0 (unused)
+_________________________________________________________________
+dense (Dense)                multiple                  510       
+=================================================================
+Total params: 596
+Trainable params: 596
+Non-trainable params: 0
+_________________________________________________________________
+sparse_categorical_accuracy: 0.9553999900817871
