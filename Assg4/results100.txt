@@ -1,0 +1,137 @@
+Epoch 1/50
+1407/1407 - 558s - loss: 4.8463 - sparse_top_k_categorical_accuracy: 0.2209 - val_loss: 4.1047 - val_sparse_top_k_categorical_accuracy: 0.3274
+Epoch 2/50
+1407/1407 - 550s - loss: 3.6963 - sparse_top_k_categorical_accuracy: 0.4058 - val_loss: 3.3439 - val_sparse_top_k_categorical_accuracy: 0.4820
+Epoch 3/50
+1407/1407 - 548s - loss: 3.1793 - sparse_top_k_categorical_accuracy: 0.5360 - val_loss: 2.8671 - val_sparse_top_k_categorical_accuracy: 0.6138
+Epoch 4/50
+1407/1407 - 547s - loss: 2.8652 - sparse_top_k_categorical_accuracy: 0.6166 - val_loss: 2.7123 - val_sparse_top_k_categorical_accuracy: 0.6562
+Epoch 5/50
+1407/1407 - 548s - loss: 2.6498 - sparse_top_k_categorical_accuracy: 0.6670 - val_loss: 2.6213 - val_sparse_top_k_categorical_accuracy: 0.6736
+Epoch 6/50
+1407/1407 - 553s - loss: 2.4943 - sparse_top_k_categorical_accuracy: 0.7024 - val_loss: 2.3515 - val_sparse_top_k_categorical_accuracy: 0.7336
+Epoch 7/50
+1407/1407 - 549s - loss: 2.3380 - sparse_top_k_categorical_accuracy: 0.7357 - val_loss: 2.2155 - val_sparse_top_k_categorical_accuracy: 0.7600
+Epoch 8/50
+1407/1407 - 547s - loss: 2.2271 - sparse_top_k_categorical_accuracy: 0.7620 - val_loss: 2.0761 - val_sparse_top_k_categorical_accuracy: 0.7920
+Epoch 9/50
+1407/1407 - 547s - loss: 2.1153 - sparse_top_k_categorical_accuracy: 0.7832 - val_loss: 2.0784 - val_sparse_top_k_categorical_accuracy: 0.7886
+Epoch 10/50
+1407/1407 - 546s - loss: 2.0237 - sparse_top_k_categorical_accuracy: 0.8001 - val_loss: 2.0184 - val_sparse_top_k_categorical_accuracy: 0.8006
+Epoch 11/50
+1407/1407 - 548s - loss: 1.9421 - sparse_top_k_categorical_accuracy: 0.8153 - val_loss: 1.9437 - val_sparse_top_k_categorical_accuracy: 0.8230
+Epoch 12/50
+1407/1407 - 548s - loss: 1.8569 - sparse_top_k_categorical_accuracy: 0.8323 - val_loss: 1.8504 - val_sparse_top_k_categorical_accuracy: 0.8284
+Epoch 13/50
+1407/1407 - 552s - loss: 1.7854 - sparse_top_k_categorical_accuracy: 0.8448 - val_loss: 1.9561 - val_sparse_top_k_categorical_accuracy: 0.8136
+Epoch 14/50
+1407/1407 - 547s - loss: 1.7126 - sparse_top_k_categorical_accuracy: 0.8579 - val_loss: 1.8940 - val_sparse_top_k_categorical_accuracy: 0.8240
+Epoch 15/50
+1407/1407 - 539s - loss: 1.6422 - sparse_top_k_categorical_accuracy: 0.8694 - val_loss: 1.8467 - val_sparse_top_k_categorical_accuracy: 0.8358
+Epoch 16/50
+1407/1407 - 503s - loss: 1.5792 - sparse_top_k_categorical_accuracy: 0.8811 - val_loss: 1.8459 - val_sparse_top_k_categorical_accuracy: 0.8374
+Epoch 17/50
+1407/1407 - 545s - loss: 1.5125 - sparse_top_k_categorical_accuracy: 0.8911 - val_loss: 1.8398 - val_sparse_top_k_categorical_accuracy: 0.8432
+Epoch 18/50
+1407/1407 - 543s - loss: 1.4519 - sparse_top_k_categorical_accuracy: 0.9008 - val_loss: 1.7931 - val_sparse_top_k_categorical_accuracy: 0.8530
+Epoch 19/50
+1407/1407 - 516s - loss: 1.3937 - sparse_top_k_categorical_accuracy: 0.9092 - val_loss: 1.8359 - val_sparse_top_k_categorical_accuracy: 0.8434
+Epoch 20/50
+1407/1407 - 543s - loss: 1.3385 - sparse_top_k_categorical_accuracy: 0.9188 - val_loss: 1.8708 - val_sparse_top_k_categorical_accuracy: 0.8448
+Epoch 21/50
+1407/1407 - 546s - loss: 1.2860 - sparse_top_k_categorical_accuracy: 0.9246 - val_loss: 1.7184 - val_sparse_top_k_categorical_accuracy: 0.8632
+Epoch 22/50
+1407/1407 - 544s - loss: 1.2433 - sparse_top_k_categorical_accuracy: 0.9302 - val_loss: 1.7458 - val_sparse_top_k_categorical_accuracy: 0.8592
+Epoch 23/50
+1407/1407 - 544s - loss: 1.1948 - sparse_top_k_categorical_accuracy: 0.9374 - val_loss: 1.7774 - val_sparse_top_k_categorical_accuracy: 0.8574
+Epoch 24/50
+1407/1407 - 545s - loss: 1.1464 - sparse_top_k_categorical_accuracy: 0.9439 - val_loss: 1.6832 - val_sparse_top_k_categorical_accuracy: 0.8678
+Epoch 25/50
+1407/1407 - 538s - loss: 1.1138 - sparse_top_k_categorical_accuracy: 0.9482 - val_loss: 1.7822 - val_sparse_top_k_categorical_accuracy: 0.8632
+Epoch 26/50
+1407/1407 - 538s - loss: 1.0718 - sparse_top_k_categorical_accuracy: 0.9513 - val_loss: 1.8786 - val_sparse_top_k_categorical_accuracy: 0.8488
+Epoch 27/50
+1407/1407 - 560s - loss: 1.0290 - sparse_top_k_categorical_accuracy: 0.9572 - val_loss: 1.8121 - val_sparse_top_k_categorical_accuracy: 0.8600
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization (BatchNo multiple                  256       
+_________________________________________________________________
+conv2d (Conv2D)              multiple                  1792      
+_________________________________________________________________
+re_lu (ReLU)                 multiple                  0         
+_________________________________________________________________
+batch_normalization_1 (Batch multiple                  256       
+_________________________________________________________________
+conv2d_1 (Conv2D)            multiple                  36928     
+_________________________________________________________________
+re_lu_1 (ReLU)               multiple                  0         
+_________________________________________________________________
+dropout (Dropout)            multiple                  0         
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+batch_normalization_2 (Batch multiple                  512       
+_________________________________________________________________
+conv2d_2 (Conv2D)            multiple                  73856     
+_________________________________________________________________
+re_lu_2 (ReLU)               multiple                  0         
+_________________________________________________________________
+batch_normalization_3 (Batch multiple                  512       
+_________________________________________________________________
+conv2d_3 (Conv2D)            multiple                  147584    
+_________________________________________________________________
+re_lu_3 (ReLU)               multiple                  0         
+_________________________________________________________________
+dropout_1 (Dropout)          multiple                  0         
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 multiple                  0         
+_________________________________________________________________
+batch_normalization_4 (Batch multiple                  1024      
+_________________________________________________________________
+conv2d_4 (Conv2D)            multiple                  295168    
+_________________________________________________________________
+re_lu_4 (ReLU)               multiple                  0         
+_________________________________________________________________
+batch_normalization_5 (Batch multiple                  1024      
+_________________________________________________________________
+conv2d_5 (Conv2D)            multiple                  590080    
+_________________________________________________________________
+re_lu_5 (ReLU)               multiple                  0         
+_________________________________________________________________
+dropout_2 (Dropout)          multiple                  0         
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 multiple                  0         
+_________________________________________________________________
+batch_normalization_6 (Batch multiple                  2048      
+_________________________________________________________________
+conv2d_6 (Conv2D)            multiple                  1180160   
+_________________________________________________________________
+re_lu_6 (ReLU)               multiple                  0         
+_________________________________________________________________
+batch_normalization_7 (Batch multiple                  2048      
+_________________________________________________________________
+conv2d_7 (Conv2D)            multiple                  2359808   
+_________________________________________________________________
+re_lu_7 (ReLU)               multiple                  0         
+_________________________________________________________________
+dropout_3 (Dropout)          multiple                  0         
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 multiple                  0         
+_________________________________________________________________
+flatten (Flatten)            multiple                  0         
+_________________________________________________________________
+dense (Dense)                multiple                  2098176   
+_________________________________________________________________
+dropout_4 (Dropout)          multiple                  0         
+_________________________________________________________________
+re_lu_8 (ReLU)               multiple                  0         
+_________________________________________________________________
+dense_1 (Dense)              multiple                  102500    
+=================================================================
+Total params: 6,893,732
+Trainable params: 6,889,892
+Non-trainable params: 3,840
+_________________________________________________________________
+313/313 - 23s - loss: 1.6981 - sparse_top_k_categorical_accuracy: 0.8616

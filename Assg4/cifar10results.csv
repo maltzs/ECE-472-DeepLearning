@@ -1,2 +1,0 @@
-Attempt,Conv filters,Conv per pool,Pool size,Dense widths,Reg coeff,Learning rate,Dropout,Epochs,Parameters,Training acc,Val acc,Test acc
-1,"32,64,128,256",2,2,"1024,512,256,128,10",0.001,0.001,0.2,10,2912170,0.7757,0.7346,0.7218999862670898
