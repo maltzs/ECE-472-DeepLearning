@@ -1,0 +1,3 @@
+[submodule "ece472-midterm"]
+	path = ece472-midterm
+	url = https://github.com/joeyberkovitz/ece472-midterm.git
