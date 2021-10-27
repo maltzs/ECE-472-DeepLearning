@@ -11,7 +11,7 @@ Repository for assignments in ECE-472: Deep Learning at The Cooper Union Fall 20
 ## Midterm Assignment
 Replication of results from: 
   
-Alain, G. and Bengio, Y. (2016). Understanding intermediate layers using linear classifier probes.*arXiv:1610.01644.*  
+Alain, G. and Bengio, Y. (2016). Understanding intermediate layers using linear classifier probes. *arXiv:1610.01644.*  
     
 
 Experiments replicated:
