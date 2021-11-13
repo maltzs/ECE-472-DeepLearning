@@ -1,3 +1,6 @@
 [submodule "ece472-midterm"]
 	path = ece472-midterm
 	url = https://github.com/joeyberkovitz/ece472-midterm.git
+[submodule "ece472-final"]
+	path = ece472-final
+	url = https://github.com/joeyberkovitz/ece472-final.git
